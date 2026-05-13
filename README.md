@@ -111,6 +111,7 @@ asl_subset/
 * Webcam required
 * Good lighting improves accuracy
 * Keep hand fully in frame
+* If you are wanting to test the models against each other, DO NOT run the demo cells before running the metrics. 
 
 ---
 
