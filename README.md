@@ -1,45 +1,96 @@
-# 🎹 ASL Gesture-Controlled Virtual Piano
+## 📥 Setup Instructions
 
-PLEASE READ BEFORE RUNNING!! The Final Project Final Code is ECE4990FinalProjectCode.ipynb. You will need to download the contents of asl_subset (dataset) and the sounds folder. Without these, the project will not compile. Please make sure the folders are in the same directory. In each cell at the top, there is a comment for which cells to run and which not to run. The ones that are labeled not to run are for the test model MobileNetV2. If you wanted to try the MobileNet v2 model. Run cells 3-8 to train the model rather than cells 9-13. Additionally, you will not need to run the sound file which is labeled in the code if you properly download the sounds folder in the github.
+### 1. Clone the Repository
 
-If you're interested in testing both models and both datasets, please download the debas folder as well.
+```bash
+git clone https://github.com/YOUR_USERNAME/4990FinalProj.git
+cd 4990FinalProj
+```
+Or manually download the folder and unzip
 ---
 
-## 🚀 Features
+### 2. Install Dependencies
 
-* Real-time hand tracking using webcam
-* Gesture recognition with high accuracy (~99% validation)
-* Virtual piano interface with visual feedback
-* Sound playback for musical notes
-* Tempo control using pinch gesture
-* Stable prediction using buffering
-
----
-
-## 🧠 Methodology
-
-### 1. Hand Tracking
-
-* MediaPipe detects **21 hand landmarks**
-* Each landmark contains (x, y, z) coordinates
-
-### 2. Feature Extraction
-
-* Landmarks are converted into **relative coordinates from the wrist**
-* This removes dependency on hand position in the frame
-* Final input: **63-dimensional feature vector (21 × 3)**
-
-### 3. Classification
-
-* A **Multilayer Perceptron (MLP)** classifies gestures into 9 classes:
-
-  * A, B, C, Q, V, L, Y → musical notes
-  * F → rest
-  * O → tempo control
+```bash
+pip install numpy tensorflow opencv-python mediapipe pygame matplotlib
+```
 
 ---
 
-## 🎼 Gesture Mapping
+## ▶️ Running the Project
+
+### 🔹 Option 1: Run Real-Time Piano (Recommended)
+
+This uses the **Landmark MLP (main model)**.
+
+Required files:
+
+* `ECE4990FinalProjectCode.ipynb`
+* `asl_landmark_model.keras`
+* `asl_landmark_classes.txt`
+* `sounds/`
+
+Run:
+
+```bash
+jupyter notebook
+```
+
+Open:
+
+```text
+ECE4990FinalProjectCode.ipynb
+```
+
+---
+
+### 🔹 Option 2: Run Training / Experiments (MLP + MobileNetV2)
+
+Notebooks:
+
+* `NFinalProj.ipynb` → Landmark MLP training
+* `NFinalProj_SOTA.ipynb` → MobileNetV2 (Dataset A)
+* `NFinalProj_Debas.ipynb` → Landmark MLP (Dataset B)
+* `NFinalProj_DebasSOTA.ipynb` → MobileNetV2 (Dataset B)
+
+These allow you to:
+
+* Train models
+* Compare performance
+* Generate accuracy graphs
+
+---
+
+## 📂 Dataset (Required for Training Only)
+
+Download Dataset A:
+👉 **[INSERT DATASET LINK HERE]**
+
+Place in project folder:
+
+```text
+asl_subset/
+  A/
+  B/
+  C/
+  ...
+```
+
+---
+
+## 🧠 Models Included
+
+* `asl_landmark_model.keras` → Landmark MLP (main model)
+* `mobilenetv2_asl_model.keras` → MobileNetV2 (baseline)
+
+---
+
+## 🎹 Controls
+
+* Show hand gestures to webcam
+* Gestures trigger piano notes
+* Gesture **O** → tempo control (pinch fingers)
+* Press **Q** to quit
 
 | Gesture | Action                         |
 | ------- | ------------------------------ |
@@ -55,99 +106,19 @@ If you're interested in testing both models and both datasets, please download t
 
 ---
 
-## 📊 Model Performance
+## ⚠️ Notes
 
-* **Training Samples:** ~3,500 landmark samples
-* **Input Size:** 63 features
-* **Classes:** 9
-* **Peak Validation Accuracy:** ~99.7%
-
-> Note: Validation data is split from only two datasets, so real-world performance may vary depending on lighting, background, and user differences.
+* Webcam required
+* Good lighting improves accuracy
+* Keep hand fully in frame
 
 ---
 
-## 📂 Dataset
+## 📊 Summary
 
-Due to GitHub file size limitations, the dataset is hosted externally.
+This project compares:
 
-👉 **Download Datasets Here:**
-https://www.kaggle.com/datasets/grassknoted/asl-alphabet
-https://www.kaggle.com/datasets/debashishsau/aslamerican-sign-language-aplhabet-dataset
+* **Landmark MLP** → fast, real-time, uses hand geometry
+* **MobileNetV2** → image-based baseline
 
-After downloading, place the dataset in the project root:
-
-```
-asl_subset/
-  A/
-  B/
-  C/
-  ...
-```
-
----
-
-## ⚙️ Installation
-
-```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
-pip install -r requirements.txt
-```
-
----
-
-## ▶️ Usage
-
-Run the demo:
-
-```bash
-python main.py
-```
-
-* Show hand gestures to the webcam
-* Recognized gestures will trigger piano notes
-* Press **'q'** to exit
-
----
-
-## 🛠️ Technologies Used
-
-* Python
-* TensorFlow / Keras
-* MediaPipe
-* OpenCV
-* NumPy
-* Pygame
-
----
-
-## ⚠️ Limitations
-
-* Model is trained on a single dataset distribution
-* Performance may drop under:
-
-  * Different lighting conditions
-  * Different users
-  * Occlusions or fast motion
-
----
-
-## 🔮 Future Improvements
-
-* Add more gesture classes
-* Improve generalization with diverse datasets
-* Deploy on embedded/edge devices
-* Add chord recognition or multi-hand support
-
----
-
-## 👤 Authors
-Derek Jacoby //
-Caleb Jala-Guinto //
-Jared Mocling
-
----
-
-## 📜 License
-
-This project is for educational purposes.
+The Landmark MLP is used for the live piano system due to its speed and accuracy.
