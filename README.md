@@ -1,6 +1,8 @@
 # 🎹 ASL Gesture-Controlled Virtual Piano
 
-PLEASE READ BEFORE RUNNING!! The Final Project Final Code is ECE4990FinalProjectCode.ipynb. You will need to download the contents of asl_subset (dataset) and the sounds folder. Without these, the project will not compile. Please make sure the folders are in the same directory. In each cell at the top, there is a comment for which cells to run and which not to run. The ones that are labeled not to run are for the test model MobileNetV2. If you wanted to try the MobileNet v2 model. Run cells 3-8 to train the model rather than cells 9-13. Additionally, you will not need to run the sound file which is labeled in the code if you properly download the sounds folder in the github. 
+PLEASE READ BEFORE RUNNING!! The Final Project Final Code is ECE4990FinalProjectCode.ipynb. You will need to download the contents of asl_subset (dataset) and the sounds folder. Without these, the project will not compile. Please make sure the folders are in the same directory. In each cell at the top, there is a comment for which cells to run and which not to run. The ones that are labeled not to run are for the test model MobileNetV2. If you wanted to try the MobileNet v2 model. Run cells 3-8 to train the model rather than cells 9-13. Additionally, you will not need to run the sound file which is labeled in the code if you properly download the sounds folder in the github.
+
+If you're interested in testing both models and both datasets, please download the debas folder as well.
 ---
 
 ## 🚀 Features
