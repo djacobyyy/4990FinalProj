@@ -141,8 +141,8 @@ python main.py
 ---
 
 ## 👤 Authors
-Derek Jacoby
-Caleb Jala-Guinto
+Derek Jacoby //
+Caleb Jala-Guinto //
 Jared Mocling
 
 ---
