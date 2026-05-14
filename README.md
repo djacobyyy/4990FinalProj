@@ -90,7 +90,7 @@ asl_subset/
 * Show hand gestures to webcam
 * Gestures trigger piano notes
 * Gesture **O** → tempo control (pinch fingers)
-* Press **Q** to quit
+* **Press Q to quit**
 
 | Gesture | Action                         |
 | ------- | ------------------------------ |
