@@ -23,6 +23,8 @@ pip install numpy tensorflow opencv-python mediapipe pygame matplotlib
 
 This uses the **Landmark MLP (main model)**.
 
+For only running the Landmark MLP demo, only run the cells with the comment #DEMO SECTION - RUN THIS SECTION
+
 Required files:
 
 * `ECE4990FinalProjectCode.ipynb`
